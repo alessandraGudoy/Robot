@@ -29,6 +29,22 @@ public final class Constants {
     public static final double rightSpeed = 0.5;
   }
 
+  public static class SwerveModuleConsts{
+    public static final int fLeftDrivePort = 1;
+    public static final int fLeftTurnPort = 2;
+
+    public static final int bLeftDrivePort = 3;
+    public static final int bLeftTurnPort = 4;
+
+    public static final int fRightDrivePort = 5;
+    public static final int fRightTurnPort = 6;
+
+    public static final int bRightDrivePort = 7;
+    public static final int bRightTurnPort = 8;
+
+    public static final double maxDriveSpeed = 1;
+  }
+
   public static class SingleMotorConsts{
     public static final int port = 5;
     public static final double speed = 0.5;
