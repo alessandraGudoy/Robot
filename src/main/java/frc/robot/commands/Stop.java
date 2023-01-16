@@ -20,7 +20,7 @@ public class Stop extends CommandBase{
 
     @Override
     public void execute(){
-        motorSubsystem.setSpeed(0);
+        motorSubsystem.setStop();
     }
 
     @Override

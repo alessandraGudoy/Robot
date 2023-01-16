@@ -41,7 +41,7 @@ public class TestModule extends SubsystemBase {
         pid = new PIDController(0, 0, 0);
         pid.enableContinuousInput(-Math.PI, Math.PI);
 
-        dEncoderOffset = encOffset;
+        //dEncoderOffset = encOffset;
 
         resetEncoders();
     }

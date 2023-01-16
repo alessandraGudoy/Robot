@@ -21,12 +21,14 @@ public class ActivityOne extends CommandBase{
 
     @Override
     public void initialize(){
+        iStep = 0;
         SmartDashboard.putString("State", "Starting");
     }
 
     @Override
     public void execute(){
         SmartDashboard.putString("State", "Executing");
+        SmartDashboard.putNumber("step", iStep);
 
         switch(iStep){
             case 0:
@@ -50,7 +52,7 @@ public class ActivityOne extends CommandBase{
 
     @Override
     public void end(boolean interrupted){
-        motorSubsystem.setSpeed(0);
+        motorSubsystem.setStop();
         iStep = 0;
         timer.stop();
         SmartDashboard.putString("State", "Ending");
