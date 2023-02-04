@@ -5,10 +5,13 @@ import java.util.function.DoubleSupplier;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.Sparks;
+import frc.robot.subsystems.Talons;
 
 public class Tank extends CommandBase{
 
     private Drive driveSubsystem;
+    //private Sparks driveSubsystem;
     private DoubleSupplier leftSpeed;
     private DoubleSupplier rightSpeed;
 
@@ -22,7 +25,7 @@ public class Tank extends CommandBase{
 
     @Override
     public void initialize(){
-        driveSubsystem.setSpeed(0, 0);
+        driveSubsystem.tank(0, 0);
     }
 
     @Override
@@ -33,7 +36,7 @@ public class Tank extends CommandBase{
 
     @Override
     public void end(boolean interrupted){
-        driveSubsystem.setSpeed(0, 0);
+        driveSubsystem.tank(0, 0);
     }
 
     @Override

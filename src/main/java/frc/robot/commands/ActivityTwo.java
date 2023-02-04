@@ -1,5 +1,6 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Elevator;
@@ -7,12 +8,15 @@ import frc.robot.subsystems.Elevator;
 public class ActivityTwo extends CommandBase {
 
     private Elevator elevator;
+    private Timer timer;
     private double speed;
     private int iCounter = 0;
+
     public ActivityTwo(Elevator subs, double newSpeed) {
-         elevator = subs;
-         speed = newSpeed;
-         addRequirements(subs);
+        timer = new Timer();
+        elevator = subs;
+        speed = newSpeed;
+        addRequirements(subs);
     }
 
     // runs every time command starts
@@ -28,21 +32,34 @@ public class ActivityTwo extends CommandBase {
         SmartDashboard.putNumber("Elevator Case", iCounter);
         SmartDashboard.putString("ELEVATOR", "EXECUTING");
         SmartDashboard.putNumber("ENCODER", iCounter);
-        switch(iCounter){
+        switch (iCounter) {
             case 0:
-                if(enc<50){
-
+                if (enc < 50) {
+                    elevator.goUp(speed);
+                } else {
+                    elevator.stop();
+                    timer.reset();
+                    timer.start();
+                    iCounter++;
                 }
-            break;
+                break;
             case 1:
-
-            break;
+                if(timer.get()>1){
+                    iCounter++;
+                }
+                break;
             case 2:
-
-            break;
+                if (enc > 0) {
+                    elevator.goDown(0.5);
+                } else {
+                    elevator.stop();
+                    elevator.resetEnc();
+                    iCounter++;
+                }
+                break;
             case 3:
-
-            break;
+                elevator.stop();
+                break;
         }
     }
 
@@ -53,7 +70,7 @@ public class ActivityTwo extends CommandBase {
 
     @Override
     public boolean isFinished() {
-        return iCounter>3;
+        return iCounter == 3;
     }
 
 }

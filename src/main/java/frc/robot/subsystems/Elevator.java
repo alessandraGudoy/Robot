@@ -21,9 +21,19 @@ public class Elevator extends SubsystemBase {
     }
 
     // METHODS (set speed, get values of sensors/encoders, etc.)
-    public void setSpeed(double speed) {
+    public void goUp(double speed) {
         motor1.set(speed);
         motor2.set(speed);
+    }
+
+    public void goDown(double speed) {
+        motor1.set(-speed);
+        motor2.set(-speed);
+    }
+
+    public void stop() {
+        motor1.set(0);
+        motor2.set(0);
     }
 
     public double getEnc(){

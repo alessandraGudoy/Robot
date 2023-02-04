@@ -31,16 +31,16 @@ public final class Constants {
 
   public static class SwerveModuleConsts{
     public static final int fLeftDrivePort = 1;
-    public static final int fLeftTurnPort = 2;
+    public static final int fLeftTurnPort = 5;
 
-    public static final int bLeftDrivePort = 3;
-    public static final int bLeftTurnPort = 4;
+    public static final int bLeftDrivePort = 2;
+    public static final int bLeftTurnPort = 6;
 
-    public static final int fRightDrivePort = 5;
-    public static final int fRightTurnPort = 6;
+    public static final int fRightDrivePort = 4;
+    public static final int fRightTurnPort = 8;
 
-    public static final int bRightDrivePort = 7;
-    public static final int bRightTurnPort = 8;
+    public static final int bRightDrivePort = 3;
+    public static final int bRightTurnPort = 7;
 
     public static final double maxDriveSpeed = 1;
   }

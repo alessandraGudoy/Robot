@@ -28,7 +28,7 @@ public class ActivityOne extends CommandBase{
     @Override
     public void execute(){
         SmartDashboard.putString("State", "Executing");
-        SmartDashboard.putNumber("step", iStep);
+        SmartDashboard.putNumber("STEP", iStep);
 
         switch(iStep){
             case 0:
@@ -45,6 +45,7 @@ public class ActivityOne extends CommandBase{
                 break;
             case 2:
                 motorSubsystem.setStop();
+                iStep++;
                 break;
         }
 
@@ -60,7 +61,7 @@ public class ActivityOne extends CommandBase{
 
     @Override
     public boolean isFinished(){
-        return iStep==2;
+        return iStep>2;
     }
 
 }
