@@ -5,6 +5,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveConsts;
 
@@ -39,6 +40,7 @@ public class Drive extends SubsystemBase {
     public void periodic() {
         // similar to robot periodic
         // runs repeatedly (regardless of mode (auto/tele))
+        SmartDashboard.putNumber("Speed", frontLeft.get());
     }
 
 }

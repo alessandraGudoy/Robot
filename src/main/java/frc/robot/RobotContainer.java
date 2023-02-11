@@ -6,6 +6,7 @@ import frc.robot.Constants.SingleMotorConsts;
 import frc.robot.commands.ActivityOne;
 import frc.robot.commands.ActivityTwo;
 import frc.robot.commands.Arcade;
+import frc.robot.commands.DriveForward;
 import frc.robot.commands.Tank;
 
 import java.lang.ModuleLayer.Controller;
@@ -38,6 +39,7 @@ public class RobotContainer {
         //new JoystickButton(controller, 1).onTrue(new InstantCommand(() -> m_drive.resetEnc()));
         //new JoystickButton(controller, 2).onTrue(new ActivityTwo(m_elevator, 0.5));
         //new JoystickButton(controller, 5).whileTrue(new Arcade(m_drive, () -> controller.getLeftY(), () -> controller.getRightX()));
+        new JoystickButton(controller, 5).whileTrue(new DriveForward(m_drive));
     }
 
     public Command getAutonomousCommand() {

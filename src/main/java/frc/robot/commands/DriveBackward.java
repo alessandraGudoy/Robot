@@ -21,7 +21,8 @@ public class DriveBackward extends CommandBase{
 
     @Override
     public void execute(){
-        driveSubsystem.setSpeed(DriveConsts.leftSpeed, DriveConsts.rightSpeed);
+        driveSubsystem.setSpeed(-2, -2);
+        
     }
 
     @Override

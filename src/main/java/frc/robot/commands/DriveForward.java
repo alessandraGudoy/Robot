@@ -23,7 +23,7 @@ public class DriveForward extends CommandBase{
     @Override
     public void execute(){ 
         SmartDashboard.putString("Driving: ", "FORWARD");
-        driveSubsystem.setSpeed(DriveConsts.leftSpeed, DriveConsts.rightSpeed);
+        driveSubsystem.setSpeed(2, 2);
     }
 
     @Override
