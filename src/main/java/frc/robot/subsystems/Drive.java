@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,6 +18,8 @@ public class Drive extends SubsystemBase {
 
     private MotorControllerGroup left, right; private DifferentialDrive diffDrive;
 
+    private PIDController drivingPID = new PIDController(0.5, 0, 0);
+
     public Drive() {
         left = new MotorControllerGroup(frontLeft, backLeft);
         right = new MotorControllerGroup(frontRight, backRight);
@@ -26,6 +29,12 @@ public class Drive extends SubsystemBase {
     public void setSpeed(double lSpeed, double rSpeed) {
         left.set(lSpeed);
         right.set(rSpeed);
+
+        // frontLeft.set(drivingPID.calculate(lSpeed));
+        // backLeft.set(drivingPID.calculate(lSpeed));
+
+        // frontRight.set(drivingPID.calculate(rSpeed));
+        // backRight.set(drivingPID.calculate(rSpeed));
     }
 
     public void arc(double lSpeed, double rSpeed){
@@ -40,7 +49,13 @@ public class Drive extends SubsystemBase {
     public void periodic() {
         // similar to robot periodic
         // runs repeatedly (regardless of mode (auto/tele))
-        SmartDashboard.putNumber("Speed", frontLeft.get());
+        SmartDashboard.putNumber("FL", frontLeft.get());
+        SmartDashboard.putNumber("BL", backLeft.get());
+        SmartDashboard.putNumber("FR", frontRight.get());
+        SmartDashboard.putNumber("BR", backRight.get());
+
+        // SmartDashboard.putNumber("Error", drivingPID.getPositionError());
+        // SmartDashboard.putNumber("SetPoint", drivingPID.getSetpoint());
     }
 
 }

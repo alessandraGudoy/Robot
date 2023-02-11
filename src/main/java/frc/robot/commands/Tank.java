@@ -25,23 +25,33 @@ public class Tank extends CommandBase{
 
     @Override
     public void initialize(){
-        driveSubsystem.tank(0, 0);
+        driveSubsystem.setSpeed(0, 0);
     }
 
     @Override
     public void execute(){
         SmartDashboard.putString("Drive", "TANK");
-        driveSubsystem.tank(leftSpeed.getAsDouble(), rightSpeed.getAsDouble());
+        SmartDashboard.putNumber("Left Stick", leftSpeed.getAsDouble());
+        SmartDashboard.putNumber("Right Stick", rightSpeed.getAsDouble());
+        driveSubsystem.setSpeed(leftSpeed.getAsDouble(), rightSpeed.getAsDouble());
     }
 
     @Override
     public void end(boolean interrupted){
-        driveSubsystem.tank(0, 0);
+        driveSubsystem.setSpeed(0, 0);
     }
 
     @Override
     public boolean isFinished(){
         return false;
+    }
+
+    public double modify(double num){
+        num = Math.abs(num) > 0.1 ? num : 0;
+
+        num = Math.cbrt(num);
+
+        return num;
     }
 
 }
